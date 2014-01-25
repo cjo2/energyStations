@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    	<title>energy stations</title>
+		<!-- load bootstrap assets -->
+	    <link href="./assets/css/bootstrap.css" rel="stylesheet">
+    	<link href="./assets/css/navbar.css" rel="stylesheet">
+		<link href="./assets/css/footer.css" rel="stylesheet">
+		<!-- begin analytics -->
+
+		<!-- end analytics -->
+    	<!-- start Google Maps custom css -->
+		<style type="text/css">
+			html { height: 100% }
+			body { height: 100%; margin: 0; padding: 0 }
+			#map-canvas { height: 100% }
+		</style>
+		<!-- end Google Maps custom css -->
+	</head>
+	
+	<body>
+		<div id="wrap">
+			<!-- begin navbar-->
+			<div class="navbar navbar-default navbar-static-top">
+				<div class="container">
+					<div class="navbar-header"><a class="navbar-brand" href="./"><span class="glyphicon glyphicon-flash"></span> energy stations</a></div>
+					<div class="navbar-collapse collapse"><ul class="nav navbar-nav"></ul></div>
+				</div>
+			</div>	
+			<!-- end navbar -->
+			<!-- begin content -->
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4" style="text-align:center">
+
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4" style="text-align:center">
+						<div class="input-group">
+							<input id="search" type="text" class="form-control" placeholder="search for location (address, city, zip)">
+							<span class="input-group-btn">
+								<button id="search-button" class="btn btn-default" type="button" onClick="search()"><span class="glyphicon glyphicon-search"></span></button>
+							</span>
+						</div>
+					</div>
+				</div>	
+				
+				<br>
+				
+				<div id="main-content">
+					<!-- Google Map Div -->
+					<div class="row">
+						<div class="col-md-12">
+							<div id="map-canvas" style="width: 100%; height: 500px; border: black"></div>
+						</div>
+					</div>
+
+					<br>
+					
+					<div class="row">
+						<div id="gas-table-sec" class="col-md-4">
+							<h4>gasoline</h4>
+								<table id="gas-table" class="table table-striped">
+									<thead><td>name</td><td>distance</td><td>reg</td><td>mid*</td><td>prem*</td></thead>
+									<tbody></tbody>
+								</table>
+						</div>
+						<div id="electric-table-sec" class="col-md-4">
+							<h4>electric</h4>
+							<table id="electric-table" class="table table-striped">
+								<thead><td>name</td><td>distance</td></thead>
+								<tbody></tbody>
+							</table>
+						</div>
+						<div id="hydrogen-table-sec" class="col-md-4">
+							<h4>hydrogen</h4>
+							<table id="hydrogen-table" class="table table-striped">
+								<thead><td>name</td><td>distance</td><td>price</td></thead>
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div id="info" class="row">
+						<div class="col-md-12">
+							<div class="well">
+								This web application pulls data from two sources: National Renewable Energy Laboratory and mygasfeed.com. You can click on each marker to get
+								more information about each station. You may also click on table rows to center the map on that location as well as open an info window.
+								The map and table elements are hidden when first starting the web application and the focus is instantly set on the search bar. This is for two reasons: 1)
+								the user knows that he or she must type in a location to continue 2) the user may begin typing as soon as the website loads. 
+								The tables only become fully visible when the data is received and processed. I have not bothered to check if there are applications that are similar, 
+								though I am confident they exist (I know they do as apps on iOS). I just wanted to be able to build this without taking influence from other sources.
+								<hr>
+								* mid and prem prices are currently not functional. with the current api, multiple ajax calls must be done (after getting the initial station info).
+							</div>
+						</div>
+					</div>
+					
+				</div>	
+			</div>
+		</div>
+		
+		<div id="footer">
+			<div class="container">
+				<p class="text-muted credit pull-right">
+					<a href="http://www.getbootstrap.com">getbootstrap.com</a> | <a href="http://www.mygasfeed.com">mygasfeed.com</a> | <a href="http://www.nrel.gov/">nrel.gov</a>
+				</p>
+			</div>
+		</div>
+		<!-- end content -->
+		<!-- load scripts -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+		<script src="./assets/js/bootstrap.js"></script>
+ 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7pKOR7BMKHhekS3YdAftxocrHYq5XQGY&sensor=false"></script>
+		<script src="./maps.js"></script>
+	</body>
+</html>
